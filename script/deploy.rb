@@ -16,6 +16,6 @@ commands = [
   "open -u #{config["user"]},#{config["password"]} #{config["host"]}",
   "cd #{config["deploy_to"]}",
   "lcd #{from}",
-  "mirror -v -R -X config/* -X data/*"
+  "mirror -v -R -X config/* -X data/* -X .git/*"
 ]
 puts `lftp -c "#{commands.join(" && ")}"`
