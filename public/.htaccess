@@ -1,0 +1,14 @@
+DirectoryIndex dispatch.cgi
+
+AddHandler cgi-script .rb .cgi
+#AddHandler cgi-script-debug .rb .cgi
+Options +ExecCGI
+
+SetEnv RUBYLIB /virtual/nog/lib:/virtual/nog/lib/ruby:/virtual/nog/lib/ruby/site_ruby/1.8
+SetEnv GEM_HOME /virtual/nog/lib/ruby/gems/1.8
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) dispatch.cgi/$1 [L]

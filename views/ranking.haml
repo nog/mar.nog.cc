@@ -1,0 +1,10 @@
+%ul
+  - @ranking[:data].each_with_index do |app, i|
+    %li
+      %img{:src => app[:image_url]}
+      %h2
+        %a{:href => app_url(app[:app_id])}= app[:title]
+      .user
+        %a{:href=>user_url(app[:user_id])}= app[:user_name]
+      .count= app[:count]
+      .description= app[:description]

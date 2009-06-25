@@ -1,0 +1,11 @@
+#index
+  - Mar::Ranking.modes.each do |mode|
+    %h2= mode
+    - Mar::Ranking.years(mode).each do |year|
+      %h3= year
+      -Mar::Ranking.monthes(mode, year).each do |month|
+        %h4= month
+        %ul.days
+          - Mar::Ranking.days(mode, year, month).each do |day|
+            %li
+              %a{:href => ranking_url(mode, year, month, day)}= day
