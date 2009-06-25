@@ -66,12 +66,7 @@ module Mar
 end
 
 include Mar::Helpers
-#CGIだと/じゃ動かないから
-get "" do
-  haml :index
-end
-
-get "/" do
+get "/?" do
   haml :index
 end
 
