@@ -9,6 +9,10 @@ require 'yaml'
 
 DATA_DIR = File.dirname(__FILE__) + "/data"
 
+configure :development do
+  use Rack::Reloader
+end
+
 module Mar
   class Ranking
     def self.modes
@@ -47,25 +51,24 @@ module Mar
       YAML.load_file(file)
     end
   end
+end
 
-  module Helpers
-    def ranking_url(mode, year, month, day)
-      month = month.to_i < 10 ? "0" + month.to_i.to_s : month.to_s
-      day = day.to_i < 10 ? "0" + day.to_i.to_s : day.to_s
-      return "/r/#{mode.to_s}/#{year.to_s}#{month}#{day}"
-    end
+helpers do
+  def ranking_url(mode, year, month, day)
+    month = month.to_i < 10 ? "0" + month.to_i.to_s : month.to_s
+    day = day.to_i < 10 ? "0" + day.to_i.to_s : day.to_s
+    return "/r/#{mode.to_s}/#{year.to_s}#{month}#{day}"
+  end
 
-    def user_url(user_id)
-      "http://platform001.mixi.jp/show_friend.pl?id=#{user_id.to_s}"
-    end
+  def user_url(user_id)
+    "http://platform001.mixi.jp/show_friend.pl?id=#{user_id.to_s}"
+  end
 
-    def app_url(app_id)
-      "http://platform001.mixi.jp/view_appli.pl?id=#{app_id.to_s}"
-    end
+  def app_url(app_id)
+    "http://platform001.mixi.jp/view_appli.pl?id=#{app_id.to_s}"
   end
 end
 
-include Mar::Helpers
 #CGIだと/じゃ動かないから
 get "" do
   haml :index
