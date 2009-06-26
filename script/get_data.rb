@@ -11,11 +11,11 @@ rescue
   exit
 end
 
-from = File.dirname(__FILE__) + "/../"
+local = File.expand_path(File.dirname(__FILE__) + "/../")
 commands = [
   "open -u #{config["user"]},#{config["password"]} #{config["host"]}",
   "cd #{config["deploy_to"]}",
-  "lcd #{from}",
-  "mirror -v -I data/*"
+  "lcd #{local}",
+  "mirror -v -i '^data/'"
 ]
 puts `lftp -c "#{commands.join(" && ")}"`

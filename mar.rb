@@ -67,14 +67,13 @@ helpers do
   def app_url(app_id)
     "http://platform001.mixi.jp/view_appli.pl?id=#{app_id.to_s}"
   end
+
+  def br(str)
+    str.gsub(/\r/, "<br />")
+  end
 end
 
-#CGIだと/じゃ動かないから
-get "" do
-  haml :index
-end
-
-get "/" do
+get "/?" do
   haml :index
 end
 
