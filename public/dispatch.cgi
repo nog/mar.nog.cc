@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-require '../mar'
+require File.dirname(__FILE__) + '/../mar'
 set :run, false
 set :env, :production
 set :server, 'cgi'

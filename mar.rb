@@ -1,8 +1,5 @@
-require 'rubygems'
-gem 'rack', "0.9.1"
-gem 'sinatra', "0.9.2"
+$LOAD_PATH.unshift *Dir["#{File.dirname(__FILE__)}/vendor/**/lib"]
 require 'sinatra'
-gem 'haml', '2.0.9'
 require 'haml'
 require 'sass'
 require 'yaml'
