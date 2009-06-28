@@ -7,6 +7,8 @@ require 'pathname'
 
 DATA_DIR = File.dirname(__FILE__) + "/data"
 
+set :root, File.dirname(__FILE__)
+
 module Mar
   class Ranking
     def self.modes
