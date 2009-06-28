@@ -19,4 +19,4 @@ commands = [
   "lcd #{local}",
   "mirror -v -i '^data/'"
 ]
-puts `lftp -c "#{commands.join(" && ")}"`
+system %Q{lftp -c "#{commands.join(" && ")}"}
