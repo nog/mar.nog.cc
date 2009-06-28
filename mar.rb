@@ -3,12 +3,11 @@ require 'sinatra'
 require 'haml'
 require 'sass'
 require 'yaml'
+require 'pathname'
 
 DATA_DIR = File.dirname(__FILE__) + "/data"
 
-configure :development do
-  use Rack::Reloader
-end
+set :app_file, Pathname(__FILE__).realpath
 
 module Mar
   class Ranking

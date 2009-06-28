@@ -41,7 +41,8 @@ module Haml
 
     # Returns the path of file relative to the Haml root.
     def scope(file) # :nodoc:
-      File.expand_path File.join(File.dirname(__FILE__), '..', '..', file)
+      #File.expand_path File.join(File.dirname(__FILE__), '..', '..', file)
+      File.join(File.dirname(__FILE__), '..', '..', file)
     end
   end
 end

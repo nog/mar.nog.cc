@@ -2,6 +2,7 @@ DirectoryIndex dispatch.cgi
 
 AddHandler cgi-script .rb .cgi
 #AddHandler cgi-script-debug .rb .cgi
+
 Options +ExecCGI
 
 SetEnv RUBYLIB /virtual/nog/lib:/virtual/nog/lib/ruby:/virtual/nog/lib/ruby/site_ruby/1.8

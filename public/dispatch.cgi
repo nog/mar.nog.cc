@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../mar'
 set :run, false
-set :env, :production
+set :environment, :production
 set :server, 'cgi'
 set :logging, false
 
