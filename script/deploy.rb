@@ -17,6 +17,6 @@ commands = [
   "open -u #{config["user"]},#{config["password"]} #{config["host"]}",
   "cd #{config["deploy_to"]}",
   "lcd #{from}",
-  "mirror -v -R --parallel -e -X config/* -X data/* -X .git/*"
+  "mirror -v -R --parallel=10 -e -X config/* -X data/* -X .git/*"
 ]
 system(%Q{lftp -c "#{commands.join(" && ")}"})

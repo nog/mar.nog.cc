@@ -8,9 +8,16 @@
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"http://yui.yahooapis.com/2.7.0/build/base/base-min.css"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+    %link{:rel=> "shortcut icon", :href => "/favicon.ico"}
   %body
     #header
       %h1
         %a{:href => "/"} mixiアプリランキング定点観測
     %div.main
       != yield
+    #footer
+      %ul
+        %li.copy
+          %a{:href => "http://cureblack.com/"} &copy;nog
+        %li.source
+          %a{:href => "http://github.com/nog/mar.nog.cc/tree/master"} SouceCode

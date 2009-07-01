@@ -2,15 +2,17 @@
   %ul.apps
     - @ranking[:data].each_with_index do |app, i|
       - rank = i + 1
-      %li.app
+      %li.app{:class => "rank_#{rank.to_s}"}
         .image
           %a{:href => app_url(app[:app_id]), :target => "_blank"}
             %img{:src => app[:image_url]}
         .text
           %h2
-            %span{:class => "rank_#{rank.to_s}"}==#{rank}位
+            %span.rank==#{rank}位
             %a{:href => app_url(app[:app_id]), :target => "_blank"}= app[:title]
             %span.by by
             %a.user{:href=>user_url(app[:user_id])}= app[:user_name]
             %span.count==(#{app[:count]})
           .description= br(app[:description])
+  .navi
+    %a{:href => "/"} 戻る
