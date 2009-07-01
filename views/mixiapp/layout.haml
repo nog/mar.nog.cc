@@ -1,0 +1,16 @@
+!!! XML
+!!! Strict
+
+%html
+  %head
+    %title mixiアプリランキング定点観測
+    %meta{:"http-equiv"=>"Content-Type", :content=>"text/html", :charset=>"utf-8"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"http://yui.yahooapis.com/2.7.0/build/base/base-min.css"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+    %link{:rel=> "shortcut icon", :href => "/favicon.ico"}
+  %body
+    #header
+    %div.main
+      != yield
+    #footer

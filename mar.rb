@@ -85,6 +85,10 @@ get "/r/:mode/:date" do
   haml :ranking
 end
 
+get "/mixiapp/?" do
+  haml :"mixiapp/index", :layout => :"mixiapp/layout"
+end
+
 get "/style.css" do
   content_type 'text/css', :charset => 'utf-8'
   sass :style

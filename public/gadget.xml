@@ -1,0 +1,16 @@
+<Module>
+  <ModulePrefs title="mixiアプリランキング定点観測" height="213"
+    description="mixiアプリのランキングを淡々と記録していきます"
+    scrolling="false"
+    singleton="false">
+    <Require feature="opensocial-0.8" />
+    <Require feature="dynamic-height"/>
+  </ModulePrefs>
+  <Content type="html" view="profile,home"><![CDATA[
+    <iframe src="http://mar.nog.cc/mixiapp" height=212 width=212 marginwidth=0 marginheight=0 frameborder=0 scrolling=no ></iframe>
+    <script>gadgets.window.adjustHeight();</script>
+  ]]></Content>
+  <Content type="html" view="canvas"><![CDATA[
+    <iframe src="http://mar.nog.cc/" marginwidth=0 marginheight=0 frameborder=0 width=100% height=100% ></iframe>
+  ]]></Content>
+</Module>
