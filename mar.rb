@@ -40,16 +40,33 @@ module Mar
       }.sort
     end
 
-    def self.get(mode, year, month, day)
+    def self.get_path(mode, year, month, day)
       month = month.to_i < 10 ? "0" + month.to_i.to_s : month.to_s
       day = day.to_i < 10 ? "0" + day.to_i.to_s : day.to_s
       file = "#{DATA_DIR}/#{mode}/#{year}/#{month}#{day}.yml"
-      YAML.load_file(file)
+      return file
+    end
+
+    def self.get(mode, year, month, day)
+      file = self.get_path(mode, year, month, day)
+      return YAML.load_file(file)
     end
   end
 end
 
 helpers do
+  def title
+    if @title
+      @title + " - mixiアプリランキング定点観測"
+    else
+      "mixiアプリランキング定点観測"
+    end
+  end
+
+  def description
+    @description || "mixiアプリの人気ランキングを毎日観測"
+  end
+
   def ranking_url(mode, year, month, day)
     month = month.to_i < 10 ? "0" + month.to_i.to_s : month.to_s
     day = day.to_i < 10 ? "0" + day.to_i.to_s : day.to_s
@@ -75,6 +92,17 @@ end
 
 get "/r/:mode" do
   redirect "/"
+end
+
+get "/r/:mode/:date.yaml" do
+  @date = Date.parse(params[:date])
+  file = Mar::Ranking.get_path(
+    params[:mode], @date.year, @date.month, @date.day
+  )
+  send_file(
+    file,
+    {:type => "text/plain"}
+  )
 end
 
 get "/r/:mode/:date" do
