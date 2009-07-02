@@ -15,8 +15,8 @@ end
 local = File.expand_path(File.dirname(__FILE__) + "/../")
 commands = [
   "open -u #{config["user"]},#{config["password"]} #{config["host"]}",
-  "cd #{config["deploy_to"]}",
-  "lcd #{local}",
-  "mirror -v -i '^data/'"
+  "cd #{config["deploy_to"]}/data",
+  "lcd #{local}/data/",
+  "mirror -v"
 ]
 system %Q{lftp -c "#{commands.join(" && ")}"}
