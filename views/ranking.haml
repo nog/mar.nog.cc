@@ -1,6 +1,6 @@
 #ranking
   %ul.apps
-    - @ranking[:data].each_with_index do |app, i|
+    - @ranking.data[:data].each_with_index do |app, i|
       - rank = i + 1
       %li.app{:class => "rank_#{rank.to_s}"}
         .image

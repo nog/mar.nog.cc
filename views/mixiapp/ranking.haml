@@ -1,0 +1,12 @@
+#date_link
+  - prev_ranking = @ranking.prev
+  - if prev_ranking
+    %a#prev{:href => "#"} <<
+  - else
+    %a <<
+  %span#date== #{@ranking.date.strftime("%Y年%m月%d日")}
+  - next_ranking = @ranking.next
+  - if next_ranking
+    %a#next{:href => "#"} >>
+  - else
+    %a >>

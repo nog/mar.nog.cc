@@ -1,11 +1,22 @@
 #index
-  - Mar::Ranking.modes.each do |mode|
-    %h2= mode
-    - Mar::Ranking.years(mode).each do |year|
-      %h3= year
-      -Mar::Ranking.monthes(mode, year).each do |month|
-        %h4= month
-        %ul.days
-          - Mar::Ranking.days(mode, year, month).each do |day|
-            %li
-              %a{:href => ranking_url(mode, year, month, day)}= day
+  #ranking
+    - Mar::Ranking.modes.each do |mode|
+      %h2= mode
+      - Mar::Ranking.years(mode).each do |year|
+        %h3= year
+        -Mar::Ranking.monthes(mode, year).each do |month|
+          %h4= month
+          %ul.days
+            - Mar::Ranking.days(mode, year, month).each do |day|
+              %li
+                %a{:href => ranking_url(mode, year, month, day)}= day
+  #mixiapp
+    %h2 mixiアプリ
+    %p
+      mixiアプリランキング定点観測をmixiアプリとして追加することができます。
+      %br
+      %a{:href => "http://platform001.mixi.jp/view_appli.pl?id=3941"} mixiアプリページ
+    %div.sample
+      %p 表示サンプル
+      %iframe{:width => 212, :height => 212, :style => "border: solid 1px black;", :src => "/mixiapp"}
+
