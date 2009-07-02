@@ -9,7 +9,7 @@
           %ul.days
             - Mar::Ranking.days(mode, year, month).each do |day|
               %li
-                %a{:href => ranking_url(mode, year, month, day)}= day
+                %a{:href => ranking_url(mode, Date.new(year, month, day))}= day
   #mixiapp
     %h2 mixiアプリ
     %p

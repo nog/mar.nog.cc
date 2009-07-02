@@ -1,12 +1,16 @@
 #date_link
   - prev_ranking = @ranking.prev
   - if prev_ranking
-    %a#prev{:href => "#"} <<
+    = ranking_link "<<", prev_ranking, {:mode => :mixiapp}
   - else
     %a <<
   %span#date== #{@ranking.date.strftime("%Y年%m月%d日")}
   - next_ranking = @ranking.next
   - if next_ranking
-    %a#next{:href => "#"} >>
+    = ranking_link ">>", next_ranking, {:mode => :mixiapp}
   - else
     %a >>
+%ul#ranking
+  - @ranking.data[:data].each do|app|
+    %li.app
+      %a{:href => app_url(app[:app_id]), :target => "_blank"}= app[:title]

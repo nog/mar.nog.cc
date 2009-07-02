@@ -97,6 +97,8 @@ module Mar
 end
 
 helpers do
+  alias :h :escape_html
+
   def title
     if @title
       @title + " - mixiアプリランキング定点観測"
@@ -109,10 +111,13 @@ helpers do
     @description || "mixiアプリの人気ランキングを毎日観測"
   end
 
-  def ranking_url(mode, year, month, day)
-    month = month.to_i < 10 ? "0" + month.to_i.to_s : month.to_s
-    day = day.to_i < 10 ? "0" + day.to_i.to_s : day.to_s
-    return "/r/#{mode.to_s}/#{year.to_s}#{month}#{day}"
+  def ranking_url(mode, date, options={})
+    base = "/r/#{mode.to_s}/#{date.strftime('%Y%m%d')}"
+    if options[:mode] == :mixiapp
+      return "/mixiapp" + base
+    else
+      return base
+    end
   end
 
   def user_url(user_id)
@@ -125,6 +130,10 @@ helpers do
 
   def br(str)
     str.gsub(/\r/, "<br />")
+  end
+
+  def ranking_link str, rank, options={}
+    %Q{<a href="#{ranking_url(rank.mode, rank.date, options)}">#{h str}</a>}
   end
 end
 
@@ -158,6 +167,12 @@ end
 
 get "/mixiapp/?" do
   @ranking = Mar::Ranking.latest("indies")
+  haml :"mixiapp/ranking", :layout => :"mixiapp/layout"
+end
+
+get "/mixiapp/r/:mode/:date" do
+  @date = Date.parse(params[:date])
+  @ranking = Mar::Ranking.new(params[:mode], @date)
   haml :"mixiapp/ranking", :layout => :"mixiapp/layout"
 end
 
