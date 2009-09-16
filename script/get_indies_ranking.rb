@@ -11,7 +11,7 @@ puts ''
 
 gem 'hpricot', "0.6"
 require 'hpricot'
-gem 'mechanize'
+gem 'mechanize', "0.7.6"
 require 'mechanize'
 gem 'kakutani-yaml_waml'
 require 'yaml_waml'

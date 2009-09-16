@@ -166,7 +166,7 @@ get "/style.css" do
 end
 
 get "/mixiapp/?" do
-  @ranking = Mar::Ranking.latest("indies")
+  @ranking = Mar::Ranking.latest("all")
   haml :"mixiapp/ranking", :layout => :"mixiapp/layout"
 end
 

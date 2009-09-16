@@ -11,14 +11,14 @@ puts ''
 
 gem 'hpricot', "0.6"
 require 'hpricot'
-gem 'mechanize'
+gem 'mechanize', "0.7.6"
 require 'mechanize'
 gem 'kakutani-yaml_waml'
 require 'yaml_waml'
 require 'yaml/store'
 
 
-WWW::Mechanize.html_parser = Hpricot
+#WWW::Mechanize.html_parser = Hpricot
 agent = WWW::Mechanize.new
 agent.follow_meta_refresh = true
 page = agent.get("http://mixi.jp/")
