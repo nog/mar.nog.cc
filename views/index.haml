@@ -2,14 +2,14 @@
   #ranking
     - Mar::Ranking.modes.each do |mode|
       %h2= mode
-      - Mar::Ranking.years(mode).each do |year|
+      - Mar::Ranking.years(mode).reverse.each do |year|
         %h3= year
-        -Mar::Ranking.monthes(mode, year).each do |month|
+        -Mar::Ranking.monthes(mode, year).reverse.each do |month|
           %h4= month
           %ul.days
             - Mar::Ranking.days(mode, year, month).each do |day|
               %li
-                %a{:href => ranking_url(mode, year, month, day)}= day
+                %a{:href => ranking_url(mode, Date.new(year, month, day))}= day
   #mixiapp
     %h2 mixiアプリ
     %p
